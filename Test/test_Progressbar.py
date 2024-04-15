@@ -6,7 +6,6 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 
 from Utils.BaseClass import BaseClass
@@ -14,7 +13,7 @@ from POM.HomePage import HomePage
 from POM.ProgressbarPage import ProgressbarPage
 
 
-@pytest.mark.usefixtures("test_setup")
+
 class TestProgressbar(BaseClass):
 
     def test_Progressbar(self):
