@@ -17,14 +17,13 @@ def test_setup(request):
     browser = request.config.getoption("--browser")
     if browser == 'chrome':
         # driver = webdriver.Chrome("C:\\Users\\User\\Downloads\\chromedriver-win32\\chromedriver.exe")
-        service_obj = Service("C:\\Users\\User\\PycharmProjects\\SextoProyectoPythonJqueryUi\\Drivers\\chromedriver.exe")
+        service_obj = Service("..\\Drivers\\chromedriver.exe")
         driver = webdriver.Chrome(service=service_obj)
     elif browser == 'firefox':
         # driver = webdriver.Firefox("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
-        service_obj = Service("C:\\Users\\User\\PycharmProjects\\SextoProyectoPythonJqueryUi\\Drivers\\geckodriver.exe")
+        service_obj = Service("..\\Drivers\\geckodriver.exe")
         driver = webdriver.Firefox(service=service_obj)
     warnings.simplefilter('ignore', ResourceWarning)
-    #driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Drivers\\chromedriver.exe")
     driver.implicitly_wait(10)
     driver.maximize_window()
     request.cls.driver = driver
