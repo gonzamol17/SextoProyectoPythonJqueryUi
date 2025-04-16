@@ -10,17 +10,18 @@ driver = None
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
 
-@pytest.fixture()
+@pytest.fixture(scope="class")
 def test_setup(request):
     global driver
     from selenium import webdriver
     browser = request.config.getoption("--browser")
     if browser == 'chrome':
-        # driver = webdriver.Chrome("C:\\Users\\User\\Downloads\\chromedriver-win32\\chromedriver.exe")
+        option = webdriver.ChromeOptions()
+        option.add_experimental_option("useAutomationExtension", False)
+        option.add_experimental_option("excludeSwitches", ['enable-automation'])
         service_obj = Service("..\\Drivers\\chromedriver.exe")
-        driver = webdriver.Chrome(service=service_obj)
+        driver = webdriver.Chrome(service=service_obj, options=option)
     elif browser == 'firefox':
-        # driver = webdriver.Firefox("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
         service_obj = Service("..\\Drivers\\geckodriver.exe")
         driver = webdriver.Firefox(service=service_obj)
     warnings.simplefilter('ignore', ResourceWarning)
