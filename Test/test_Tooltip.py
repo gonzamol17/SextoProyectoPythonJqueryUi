@@ -1,6 +1,5 @@
 import time
 import pytest
-import unittest
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
@@ -20,6 +19,7 @@ class TestTooltip(BaseClass):
         driver = self.driver
         hp = HomePage(driver)
         hp.clickTooltipLink()
+        time.sleep(1)
         driver.execute_script("window.scrollTo(0, 200)")
         tt = ToolTipPage(driver)
         driver.switch_to.frame(0)

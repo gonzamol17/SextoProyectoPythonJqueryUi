@@ -13,7 +13,7 @@ from POM.HomePage import HomePage
 from POM.SpinnerPage import SpinnerPage
 
 
-
+@pytest.mark.report
 class TestSpinner(BaseClass):
 
     def test_Spinner(self):
